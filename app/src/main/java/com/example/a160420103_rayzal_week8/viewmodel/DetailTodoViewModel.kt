@@ -18,14 +18,14 @@ class DetailTodoViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
-    fun fetch(uuid: String) { // Mengubah tipe parameter menjadi String
+    fun fetch(uuid: Int) { // Mengubah tipe parameter menjadi String
         viewModelScope.launch {
             val db = TodoDatabase.buildDatabase(getApplication())
             todoLD.postValue(db.todoDao().selectTodo(uuid))
         }
     }
 
-    fun update(title: String, notes: String, priority: Int, uuid: String) { // Mengubah tipe parameter uuid menjadi String
+    fun update(title: String, notes: String, priority: Int, uuid: Int) { // Mengubah tipe parameter uuid menjadi String
         viewModelScope.launch {
             val db = TodoDatabase.buildDatabase(getApplication())
             db.todoDao().update(title, notes, priority, uuid)
