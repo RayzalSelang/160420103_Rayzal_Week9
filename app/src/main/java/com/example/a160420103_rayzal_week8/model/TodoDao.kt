@@ -15,13 +15,13 @@ interface TodoDao {
     suspend fun selectAllTodo(): List<Todo>
 
     @Query("SELECT * FROM todo WHERE uuid= :id")
-    fun selectTodo(id: String): Todo
+    fun selectTodo(id: Int): Todo
 
     @Query("UPDATE todo SET is_done=:isDone WHERE uuid = :id")
     suspend fun updateIsDone(isDone:Int, id:Int)
 
     @Query("UPDATE todo SET title=:title, notes=:notes, priority=:priority WHERE uuid = :id")
-    suspend fun update(title: String, notes: String, priority: Int, id: String)
+    suspend fun update(title: String, notes: String, priority: Int, id: Int)
 
 
     @Delete
